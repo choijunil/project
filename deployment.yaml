@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cb-test-api
+  namespace: prd-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: cb-test-api
+  template:
+    metadata:
+      labels:
+        app: cb-test-api
+    spec:
+      containers:
+      - image: nginx
+        imagePullPolicy: Always
+        name: cb-test-api       
+        ports:
+        - containerPort: 80
