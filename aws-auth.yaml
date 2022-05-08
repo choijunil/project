@@ -1,0 +1,30 @@
+apiVersion: v1
+data:
+  mapRoles: |
+    - groups:
+      - system:bootstrappers
+      - system:nodes
+      rolearn: arn:aws:iam::882550432907:role/eksctl-k8s-demo-nodegroup-ng-feef-NodeInstanceRole-6Q95QLTCZAQL
+      username: system:node:{{EC2PrivateDNSName}}
+
+      rolearn: arn:aws:iam::123456712345:role/[CodeBuild Role 이름]
+      username: [CodeBuild Role 이름]
+      groups:
+        - system:masters
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2022-05-07T15:54:16Z"
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:data:
+        .: {}
+        f:mapRoles: {}
+    manager: vpcLambda
+    operation: Update
+    time: "2022-05-07T15:54:16Z"
+  name: aws-auth
+  namespace: kube-system
+  resourceVersion: "1885"
+  uid: de4cce52-b8c4-4baa-8ee5-1c706d1f7fad
